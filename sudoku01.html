@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Template</title>
+<link rel="icon" href="">
+<link rel="stylesheet" href="">
+<style>
+td,input {
+  width:1.1em;
+}
+</style>
+<script src=""></script>
+</head>
+<body>
+<div>
+<h2>Sudoku</h2>
+<table id="tbl">
+  <form>
+    <tr>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+    </tr>
+    <tr>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+    </tr>
+    <tr>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+    </tr>
+    <tr>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+    </tr>
+    <tr>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+    </tr>
+    <tr>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+    </tr>
+    <tr>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+    </tr>
+    <tr>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+    </tr>
+    <tr>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+      <td><input type="text" /></td>
+    </tr>
+  </form>
+</table>
+<button onclick=myf()>go</button>
+</div>
+
+<script>
+let a1 = [];
+let ax = [];
+let tv = [];
+let a11 = document.getElementById("tbl");
+
+function myf() 
+{
+    for (let i=0;i<9;i++) 
+    {
+        for (let j=0;j<9;j++) 
+        {
+            if (a11.rows[i].cells[j].children[0].value==="") 
+            {
+                a1.push(0);
+            }
+            else 
+           {
+               a1.push(Number(a11.rows[i].cells[j].children[0].value));
+           }
+        }
+    }
+    a2 = [
+    0,0,0,2,6,4,0,0,0,
+    0,0,7,0,0,0,0,0,8,
+    0,0,0,0,0,1,0,0,0,
+    0,5,8,0,0,0,0,0,0,
+    0,0,2,0,9,0,3,0,0,
+    0,0,0,0,0,0,6,1,0,
+    0,0,0,8,0,0,0,0,0,
+    6,0,0,0,0,0,4,0,0,
+    0,0,0,5,3,7,0,0,0];
+
+    loop();
+}
+
+
+function fill1(a) 
+{
+    let b1 = [];
+    let tb1 = [];
+    let d1 = [];
+    let e1 = [];
+    let sf = true;
+    while (sf) 
+    {
+        b1 = [];
+        for (let i=0;i<9;i++) 
+        {
+            let br = []
+            for (let j=0;j<9;j++) 
+            {
+                br[j] = a[9*i+j];
+            }
+            b1.push(br);
+        }
+        tb1 = [];
+        for (let i=0;i<9;i++) 
+        {
+            let br = []
+            for (let j=0;j<9;j++) 
+            {
+                br[j] = a[i+9*j];
+            }
+            tb1.push(br);
+        }
+        d1 = [];
+        for (let n of [0,3,6,27,30,33,54,57,60]) 
+        {
+            let dr = [];
+            for (let j=0; j<9; j++)
+            {
+                dr[j]=a[n+j+6*Math.floor(j/3)];
+            }  
+            d1.push(dr);
+        }
+//        console.log(d1);
+        e1 = [];
+        for (let n=0; n<81; n++) 
+        {
+            e1[n] = 0;
+        }            
+
+        for (let n=0; n<81; n++) 
+        {
+            i = Math.floor(n/9);
+            j = n%9;
+            k = 3*Math.floor(i/3) + Math.floor(j/3);
+            b1 = [];
+            for (let i=0;i<9;i++) 
+            {
+                let br = []
+                for (let j=0;j<9;j++) 
+                {
+                    br[j] = a[9*i+j];
+                }
+                b1.push(br);
+            }
+            tb1 = [];
+            for (let i=0;i<9;i++) 
+            {
+                let br = []
+                for (let j=0;j<9;j++) 
+                {
+                    br[j] = a[i+9*j];
+                }
+                tb1.push(br);
+            }
+            d1 = [];
+            for (let n of [0,3,6,27,30,33,54,57,60]) 
+            {
+                let dr = [];
+                for (let j=0; j<9; j++)
+                {
+                    dr[j]=a[n+j+6*Math.floor(j/3)];
+                }  
+                d1.push(dr);
+            }
+            if (a[n] == 0) 
+            {
+                for (let x=1; x<10; x++) 
+                {
+                    if ((!b1[i].includes(x)) && (!tb1[j].includes(x)) && (!d1[k].includes(x))) 
+                    {
+                        e1[n] +=1;
+                    }
+                }
+                if (n==35) console.log(n,e1[n]);
+                if (e1[n] == 0) 
+                {
+                    return -1;
+                }
+                for (let x=1; x<10; x++) 
+                {
+                    if ((!b1[i].includes(x)) && (!tb1[j].includes(x)) && (!d1[k].includes(x)) && (e1[n]==1)) 
+                    {
+                        a[n] = x;
+                    }
+                }
+            }
+        }
+        if (!e1.includes(1)) 
+         {
+            sf = false;    
+         }
+    }
+    console.log(b1);    
+    if (!a.includes(0)) 
+    {
+        return 1;
+    } 
+    else 
+    {
+        return 0;
+    } 
+}  
+
+function back() 
+{
+    while (tv[tv.length-1] == 0)
+    {
+        a1[tv[tv.length-2]] = 0;
+        tv.pop();
+        tv.pop();
+    }
+    a1[tv[tv.length-2]] = tv[tv.length-1];
+    tv[tv.length-1] = 0;
+    return 0;
+}
+
+function forw() 
+{
+    let b1 = [];
+    let tb1 = [];
+    let d1 = [];
+    let e1 = [];
+    for (let i=0;i<9;i++) 
+    {
+        let br = []
+        for (let j=0;j<9;j++) 
+        {
+            br[j] = ax[9*i+j];
+        }
+        b1.push(br);
+    }
+    tb1 = []
+    for (let i=0;i<9;i++) 
+    {
+        let br = []
+        for (let j=0;j<9;j++) 
+        {
+            br[j] = ax[i+9*j];
+        }
+        tb1.push(br);
+    }
+    d1 = [];
+    for (let n of [0,3,6,27,30,33,54,57,60]) 
+    {
+        let dr = [];
+        for (let j=0; j<9; j++)
+        {
+            dr[j]=ax[n+j+6*Math.floor(j/3)];
+        }  
+        d1.push(dr);
+    }
+    e1 = [];
+    for (let n=0; n<81; n++) 
+    {
+        e1[n] = 0;
+    }            
+
+    let tvt = [];
+    
+    for (let n=0; n<81; n++) 
+    {
+        i = Math.floor(n/9);
+        j = n%9;
+        k = 3*Math.floor(i/3) + Math.floor(j/3);
+        for (let i=0;i<9;i++) 
+        {
+            let br = []
+            for (let j=0;j<9;j++) 
+            {
+                br[j] = ax[9*i+j];
+            }
+            b1.push(br);
+        }
+        tb1 = []
+        for (let i=0;i<9;i++) 
+        {
+            let br = []
+            for (let j=0;j<9;j++) 
+            {
+                br[j] = ax[i+9*j];
+            }
+            tb1.push(br);
+        }
+        d1 = [];
+        for (let n of [0,3,6,27,30,33,54,57,60]) 
+        {
+            let dr = [];
+            for (let j=0; j<9; j++)
+            {
+                dr[j]=ax[n+j+6*Math.floor(j/3)];
+            }  
+            d1.push(dr);
+        }
+        if (ax[n] == 0) 
+        {
+            for (let x=1; x<10; x++) 
+            {
+                if ((!b1[i].includes(x)) && (!tb1[j].includes(x)) && (!d1[k].includes(x)))
+                {
+                    e1[n] +=1;
+                }
+            }
+            if (e1[n] == 2) 
+            {
+                tvt[0] = n;     
+                for (let x=1; x<10; x++) 
+                {
+                    if ((!b1[i].includes(x)) && (!tb1[j].includes(x)) && (!d1[k].includes(x))) 
+                    {
+                        tvt.push(x);
+                    }
+                }
+                break;
+            }
+        }
+    }
+
+    a1[tvt[0]] = tvt[1];
+    tv.push(tvt[0]);
+    tv.push(tvt[2]);
+    return 0;
+}
+
+function loop() 
+{
+    let gi = 0;
+    while (a1.includes(0))
+    {
+        gi++;
+        console.log('\nløb num '+ gi);
+        //if (gi==127){break;}
+        for (let n=0; n<81; n++)
+        {
+            ax[n] = a1[n];
+        }
+        flg = fill1(ax);
+            for (let i=0;i<9;i++) 
+            {
+                for (let j=0;j<9;j++) 
+                {
+                    a11.rows[i].cells[j].children[0].value = ""+ax[9*i+j] 
+                }
+            }
+        console.log(flg);
+        if (flg == 0)
+        {
+            forw();
+            console.log(tv);
+        }
+        else if (flg == -1)
+        {
+            back();
+            console.log(tv);
+        }
+        else
+        {
+            for (let n=0; n<81; n++)
+            {
+                a1[n] = ax[n];
+            }
+            for (let i=0;i<9;i++) 
+            {
+                for (let j=0;j<9;j++) 
+                {
+                    a11.rows[i].cells[j].children[0].value = ""+ax[9*i+j] 
+                }
+            }
+        }
+    }
+}
+</script>
+</body>
+</html>
